@@ -71,6 +71,7 @@ const Container = styled.div`
    left: 2rem;
 
    width: 20vw;
+   /* color: rgb(120, 87, 173); */
 
    a {
       display: flex;

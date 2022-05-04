@@ -21,7 +21,7 @@ const Center = ({ handleClick, click }) => {
          click={click}
          onClick={handleClick}
       >
-         <LogoCenter fill="#000" /* width="150" */ />
+         <LogoCenter fill="#36254e" /* width="150" */ />
          <span>click here</span>
       </Wrapper>
    );
@@ -54,6 +54,7 @@ const Wrapper = styled(motion.button)`
    flex-direction: column;
    justify-content: center;
    align-items: center;
+   color: ${props => props.theme.text};
 
    svg {
       width: ${props => (props.click ? '80px' : '150px')};

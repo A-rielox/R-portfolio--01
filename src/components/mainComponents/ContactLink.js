@@ -47,4 +47,6 @@ const Wrapper = styled(motion.button)`
    border: none;
    outline: none;
    background-color: transparent;
+
+   color: ${props => props.theme.text};
 `;

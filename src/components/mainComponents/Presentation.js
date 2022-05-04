@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 // import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Me from '../../assets/Images/profile-img.png';
+import Me from '../../assets/Images/yo1.svg';
+// import Me from '../../assets/Images/profile-img.png';
 
 const Intro = () => {
    return (
       <Box
-         className="XXXXXX"
          initial={{ height: 0, width: 0 }}
          animate={{ height: '50vh', width: '55vw' }}
          transition={{ type: 'spring', duration: 2, delay: 1 }}
@@ -23,7 +23,7 @@ const Intro = () => {
                </div>
 
                <div className="bottom">
-                  <h6>I design and Code simple yet beautiful websites.</h6>
+                  <h6>And I really enjoy making full-stack web aplications.</h6>
                </div>
             </Text>
          </SubBox>
@@ -101,15 +101,21 @@ const SubBox = styled.div`
    justify-content: center;
 
    .pic {
-      width: auto;
-      height: 100%;
+      width: 100%;
+      height: auto;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      /* border-radius: 50px; */
    }
 `;
 
 const Text = styled(motion.div)`
    font-size: calc(1em + 1.5vw);
    padding: 0 2rem;
-   cursor: pointer;
 
    display: flex;
    flex-direction: column;

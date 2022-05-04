@@ -1,20 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
+import { AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
-
-import LogoMainPage from './subComponents/LogoMainPage';
 
 // prettier-ignore
 import {
    ContactLink, WorkLink, AboutLink, SkillsLink, Center, Presentation
 } from './mainComponents';
+import LogoMainPage from './subComponents/LogoMainPage';
+import Loader from './Loader';
 
 const Main = () => {
+   const [loaded, setLoaded] = useState(false);
+   useEffect(() => {
+      setTimeout(() => {
+         setLoaded(true);
+      }, 4000);
+   }, []);
+
    const [click, setClick] = useState(false);
    const handleClick = () => setClick(!click);
 
    return (
       <MainContainer>
+         <AnimatePresence>{!loaded ? <Loader /> : null}</AnimatePresence>
+
          <BlackSquare click={click} />
 
          <Container>
