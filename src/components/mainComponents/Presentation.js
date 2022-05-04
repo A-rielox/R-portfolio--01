@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
 // import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Me from '../../assets/Images/yo1.svg';
-// import Me from '../../assets/Images/profile-img.png';
+// import Me from '../../assets/Images/yo1.svg';
 
+import MainSvg from './MainSvg';
 const Intro = () => {
    return (
       <Box
@@ -34,7 +34,8 @@ const Intro = () => {
                animate={{ opacity: 1 }}
                transition={{ duration: 1, delay: 2 }}
             >
-               <img className="pic" src={Me} alt="Profile Pic" />
+               {/* <img className="pic" src={Me} alt="Profile Pic" /> */}
+               <MainSvg width={'100%'} height={'auto'} />
             </motion.div>
          </SubBox>
       </Box>

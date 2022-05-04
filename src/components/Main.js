@@ -75,7 +75,7 @@ const BlackSquare = styled.div`
    position: absolute;
    top: ${props => (props.click ? '50%' : '50%')};
    right: ${props => (props.click ? '0' : '50%')};
-   background-color: #000;
+   background-color: #36254e;
 
    height: ${props => (props.click ? '100%' : '0')};
    width: ${props => (props.click ? '100%' : '0')};
