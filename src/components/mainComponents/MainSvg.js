@@ -205,14 +205,3 @@ const MainSvg = props => {
 };
 
 export default MainSvg;
-
-// const Wrapper = styled.div`
-//    svg {
-//       width: 50%;
-//       height: auto;
-//       & > * {
-//          width: 50%;
-//          height: auto;
-//       }
-//    }
-// `;

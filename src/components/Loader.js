@@ -27,7 +27,7 @@ const textVariants = {
    },
    visible: {
       opacity: 1,
-      x: -50,
+      x: '-5vw',
 
       transition: {
          duration: 2,
@@ -137,7 +137,7 @@ const Wrapper = styled(motion.div)`
    svg {
       width: 20vw;
       height: auto;
-      fill: ${props => `rgba(${props.theme.bodyRgba},0.5)`};
+      fill: ${props => `rgba(${props.theme.bodyRgba},0)`};
 
       overflow: visible;
       stroke-linejoin: round;
@@ -153,6 +153,7 @@ const Top = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
+   margin-left: 4rem;
 `;
 
 const Text = styled(motion.span)`

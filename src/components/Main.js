@@ -14,7 +14,7 @@ const Main = () => {
    const [loaded, setLoaded] = useState(false);
    useEffect(() => {
       setTimeout(() => {
-         setLoaded(true);
+         // setLoaded(true);
       }, 4000);
    }, []);
 
