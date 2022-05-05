@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
@@ -10,14 +10,7 @@ import {
 import LogoMainPage from './subComponents/LogoMainPage';
 import Loader from './Loader';
 
-const Main = () => {
-   const [loaded, setLoaded] = useState(false);
-   useEffect(() => {
-      setTimeout(() => {
-         // setLoaded(true);
-      }, 4000);
-   }, []);
-
+const Main = ({ loaded }) => {
    const [click, setClick] = useState(false);
    const handleClick = () => setClick(!click);
 

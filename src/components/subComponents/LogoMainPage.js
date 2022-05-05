@@ -16,7 +16,7 @@ const pathVariants = {
       pathLength: 1,
 
       transition: {
-         duration: 5,
+         duration: 2,
          ease: 'easeInOut',
       },
    },
@@ -33,7 +33,7 @@ const textVariants = {
 
       transition: {
          duration: 2,
-         delay: 2,
+         // delay: 2,
          ease: 'easeInOut',
       },
    },
@@ -66,7 +66,7 @@ const LogoMainPage = ({ color }) => {
 export default LogoMainPage;
 
 const Container = styled.div`
-   position: absolute;
+   position: fixed;
    top: 2rem;
    left: 2rem;
 
@@ -79,7 +79,7 @@ const Container = styled.div`
    }
 
    svg {
-      width: 5vw;
+      width: 4vw;
       height: auto;
       fill: ${props =>
          props.color === 'light'
