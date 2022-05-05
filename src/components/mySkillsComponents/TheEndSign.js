@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const TheEndSign = ({ scrollprogress }) => {
-   console.log(scrollprogress);
    return (
       <Wrapper>
          <svg x="0px" y="0px" viewBox="0 0 2000 1500">
@@ -55,9 +54,10 @@ export default TheEndSign;
 const Wrapper = styled.div`
    position: fixed;
    bottom: -30px;
+   left: 5vw;
    svg {
       width: auto;
-      height: 25vh;
+      height: 20vh;
 
       fill: ${props => `rgba(${props.theme.textRgba},0.9)`};
 

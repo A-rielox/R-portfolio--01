@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import { useViewportScroll } from 'framer-motion';
 
@@ -12,7 +13,12 @@ const MySkillsPage = () => {
    const { scrollYProgress } = useViewportScroll();
 
    return (
-      <MainContainer className="MAIN CONTAINER">
+      <MainContainer
+         className="MAIN CONTAINER"
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1, transition: { duration: 1 } }}
+         exit={{ opacity: 0, transition: { duration: 0.5 } }}
+      >
          <LogoMainPage color="light" />
 
          <Content className="COOOOONTENT">
@@ -28,7 +34,7 @@ const MySkillsPage = () => {
 
 export default MySkillsPage;
 
-const MainContainer = styled.div`
+const MainContainer = styled(motion.div)`
    min-width: 100vw;
    min-height: 100vh;
 `;

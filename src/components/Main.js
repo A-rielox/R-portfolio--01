@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 
 // prettier-ignore
@@ -14,8 +14,23 @@ const Main = ({ loaded }) => {
    const [click, setClick] = useState(false);
    const handleClick = () => setClick(!click);
 
+   const [path, setpath] = useState('xxxxxxx'); // 🥊
+   const goY = { y: '-100%' }; // 🥊
+   const goX = { x: `${path === 'work' ? '100%' : '-100%'}` }; // 🥊
+
+   useEffect(() => {
+      console.log(path);
+   }, [path]);
+
    return (
-      <MainContainer>
+      <MainContainer
+         key="modal"
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         /* about abajo izq, skills abajo drch */
+         exit={path === 'about' ? goY : goX}
+         transition={{ duration: 0.5 }}
+      >
          <AnimatePresence>{!loaded ? <Loader /> : null}</AnimatePresence>
 
          <BlackSquare click={click} />
@@ -27,11 +42,11 @@ const Main = ({ loaded }) => {
 
             <ContactLink click={+click} />
 
-            <WorkLink click={+click} />
+            <WorkLink click={+click} setpath={setpath} />
 
-            <AboutLink click={+click} />
+            <AboutLink click={+click} setpath={setpath} />
 
-            <SkillsLink click={+click} />
+            <SkillsLink click={+click} setpath={setpath} />
          </Container>
 
          {click ? <Presentation click={click} /> : null}
@@ -41,7 +56,7 @@ const Main = ({ loaded }) => {
 
 export default Main;
 
-const MainContainer = styled.div`
+const MainContainer = styled(motion.div)`
    background: ${props => props.theme.body};
    width: 100vw;
    height: 100vh;

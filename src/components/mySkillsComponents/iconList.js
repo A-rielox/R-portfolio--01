@@ -23,26 +23,26 @@ export const frontIconList = [
    { id: 2, icon: css, name: 'css-3' },
    { id: 4, icon: javascript, name: 'javascript' },
    { id: 7, icon: react, name: 'react' },
-   { id: 8, icon: sass, name: 'sass' },
    { id: 9, icon: styledC, name: 'styled components' },
    { id: 5, icon: mui, name: 'mui' },
    { id: 6, icon: motion, name: 'motion (from framer)' },
-   { id: 1, icon: axios, name: 'axios' },
 ];
 
 export const backIconList = [
    { id: 13, icon: node, name: 'nodejs' },
    { id: 10, icon: express, name: 'express' },
-   { id: 11, icon: jwt, name: 'jwt' },
    { id: 12, icon: mongo, name: 'mongoDB' },
 ];
 
 export const extraIconList = [
-   { id: 16, icon: linux, name: 'linux' },
-   { id: 18, icon: postman, name: 'postman' },
-   { id: 15, icon: github, name: 'github' },
+   { id: 1, icon: axios, name: 'axios' },
+   { id: 8, icon: sass, name: 'sass' },
    { id: 19, icon: redux, name: 'redux' },
    { id: 14, icon: auth0, name: 'auth0' },
+   { id: 11, icon: jwt, name: 'jwt' },
+   { id: 18, icon: postman, name: 'postman' },
+   { id: 16, icon: linux, name: 'linux' },
+   { id: 15, icon: github, name: 'github' },
    { id: 17, icon: npm, name: 'npm' },
 ];
 

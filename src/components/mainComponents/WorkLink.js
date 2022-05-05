@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const WorkLink = ({ click }) => {
+const WorkLink = ({ click, setpath }) => {
    return (
-      <Wrapper to="/work" click={+click}>
+      <Wrapper to="/work" click={+click} onClick={() => setpath('work')}>
          <motion.h2
             initial={{
                y: -200,

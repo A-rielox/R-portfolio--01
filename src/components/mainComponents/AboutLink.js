@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const AboutLink = ({ click }) => {
+const AboutLink = ({ click, setpath }) => {
    return (
-      <Wrapper to="/about" click={+click}>
+      <Wrapper to="/about" click={+click} onClick={() => setpath('about')}>
          <motion.h2
             // onClick={() => setpath('about')}
             initial={{

@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const SkillsLink = ({ click }) => {
+const SkillsLink = ({ click, setpath }) => {
    return (
-      <Wrapper to="/skills" click={+click}>
+      <Wrapper to="/skills" click={+click} onClick={() => setpath('skills')}>
          <motion.h2
             // onClick={() => setpath('skills')}
             initial={{
