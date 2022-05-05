@@ -7,7 +7,9 @@ import { AnimatePresence } from 'framer-motion';
 import GlobalStyle from './globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme /* , DarkTheme */ } from './components/Themes';
+/* 
 
+*/
 // prettier-ignore
 import { Main, AboutPage, MySkillsPage, BlogPage, WorkPage } from "./components";
 
