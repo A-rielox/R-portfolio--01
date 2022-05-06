@@ -7,7 +7,7 @@ import { frontIconList, backIconList, extraIconList } from './iconList';
 
 const RightContent = () => {
    return (
-      <RightWrapper className="LEFT-WRAPPER">
+      <RightWrapper className="right-WRAPPER">
          <Content>
             <Title>en front</Title>
             {frontIconList.map(item => {

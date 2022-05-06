@@ -69,7 +69,7 @@ const Container = styled.div`
    position: fixed;
    top: 2rem;
    left: 2rem;
-
+   z-index: 100;
    width: 20vw;
    /* color: rgb(120, 87, 173); */
 

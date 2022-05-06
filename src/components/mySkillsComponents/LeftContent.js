@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const LeftContent = () => {
    return (
-      <LeftWrapper className="RIGHT-WRAPPER">
+      <LeftWrapper className="left-WRAPPER">
          <Content>
             <Title>Full Stack Developer</Title>
 
@@ -56,7 +56,6 @@ const LeftWrapper = styled.div`
    width: 70vw;
    position: relative;
    z-index: 10;
-   cursor: pointer;
 `;
 
 const Content = styled.div`
@@ -64,11 +63,11 @@ const Content = styled.div`
    color: ${props => props.theme.text};
    /* background-color: ${props => props.theme.body}; */
    backdrop-filter: blur(2px);
+   transition: all 0.3s ease;
 
    &:hover {
       color: ${props => props.theme.body};
       background-color: ${props => props.theme.text};
-      transition: all 0.3s ease;
    }
    /*  */
    /*  */
@@ -82,6 +81,7 @@ const Content = styled.div`
    display: flex;
    flex-direction: column;
    /* justify-content: space-between; */
+   cursor: pointer;
 `;
 
 const Title = styled.h2`
