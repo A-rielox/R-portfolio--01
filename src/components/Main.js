@@ -18,16 +18,11 @@ const Main = ({ loaded }) => {
    const goY = { y: '-100%' }; // 🥊
    const goX = { x: `${path === 'work' ? '100%' : '-100%'}` }; // 🥊
 
-   useEffect(() => {
-      console.log(path);
-   }, [path]);
-
    return (
       <MainContainer
          key="modal"
          initial={{ opacity: 0 }}
          animate={{ opacity: 1 }}
-         /* about abajo izq, skills abajo drch */
          exit={path === 'about' ? goY : goX}
          transition={{ duration: 0.5 }}
       >

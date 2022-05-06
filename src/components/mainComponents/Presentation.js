@@ -35,7 +35,7 @@ const Intro = () => {
                transition={{ duration: 1, delay: 2 }}
             >
                {/* <img className="pic" src={Me} alt="Profile Pic" /> */}
-               <MainSvg width={'100%'} height={'auto'} />
+               <MainSvg width={'100%'} height={'100%'} />
             </motion.div>
          </SubBox>
       </Box>
