@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { motion, AnimatePresence } from 'framer-motion';
 import styled from 'styled-components';
 
 // prettier-ignore
 import {
-   ContactLink, WorkLink, AboutLink, SkillsLink, Center, Presentation
+   ContactLink, WorkLink, AboutLink, SkillsLink, Center, Presentation, 
 } from './mainComponents';
 import LogoMainPage from './subComponents/LogoMainPage';
 import Loader from './Loader';
+import ContactModal from './modalComponents/ContactModal';
 
 const Main = ({ loaded }) => {
+   // --------------- para presentation
    const [click, setClick] = useState(false);
    const handleClick = () => setClick(!click);
 
-   const [path, setpath] = useState('xxxxxxx'); // 🥊
+   // --------------- para ContactModal
+   const [isContactModal, setIsContactModal] = useState(false);
+   const contactModalToggler = () => {
+      setIsContactModal(!isContactModal);
+   };
+
+   // --------------- para dirección de la transición
+   const [path, setpath] = useState(''); // 🥊
    const goY = { y: '-100%' }; // 🥊
    const goX = { x: `${path === 'work' ? '100%' : '-100%'}` }; // 🥊
 
@@ -35,7 +44,10 @@ const Main = ({ loaded }) => {
 
             <Center handleClick={handleClick} click={+click} />
 
-            <ContactLink click={+click} />
+            <ContactLink
+               click={+click}
+               contactModalToggler={contactModalToggler}
+            />
 
             <WorkLink click={+click} setpath={setpath} />
 
@@ -45,6 +57,16 @@ const Main = ({ loaded }) => {
          </Container>
 
          {click ? <Presentation click={click} /> : null}
+
+         {/* CONTACT-MODAL */}
+         <AnimatePresence>
+            {isContactModal && (
+               <ContactModal
+                  isContactModal={isContactModal}
+                  contactModalToggler={contactModalToggler}
+               />
+            )}
+         </AnimatePresence>
       </MainContainer>
    );
 };

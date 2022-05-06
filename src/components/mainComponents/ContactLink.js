@@ -3,9 +3,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const ContactLink = ({ click }) => {
+const ContactLink = ({ click, contactModalToggler }) => {
    return (
-      <Wrapper click={+click}>
+      <Wrapper click={+click} onClick={contactModalToggler}>
          <motion.h2
             initial={{
                y: -200,
