@@ -1,10 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 import Backdrop from './ContactModalBackdrop';
 
 import TheContent from './Content';
 import ContactModalParticleComponent from './ContactModalParticleComponent';
+import XClose from './XClose';
 
 const dropIn = {
    hidden: {
@@ -49,13 +50,20 @@ const ContactModal = ({ isContactModal, contactModalToggler }) => {
 
             <TheContent />
 
-            <Button onClick={contactModalToggler}>Close</Button>
+            <Button onClick={contactModalToggler}>
+               <XClose width={30} height={30} />
+            </Button>
          </Content>
       </Backdrop>
    );
 };
 
 export default ContactModal;
+
+const Bounce = keyframes`
+   from {  transform: scale(1.1);   }
+   to {  transform: scale(1);   }
+`;
 
 const Content = styled(motion.div)`
    border-radius: 12px;
@@ -65,6 +73,8 @@ const Content = styled(motion.div)`
 
    background: ${props => props.theme.body};
    position: relative;
+
+   z-index: 2000000;
 `;
 
 const ParticleWrapper = styled(motion.div)``;
@@ -83,11 +93,23 @@ const Button = styled.button`
    background-color: ${props => props.theme.body};
    padding: 0.5rem;
    border-radius: 12px;
+   cursor: pointer;
+
+   svg {
+      padding: 0.5rem;
+      fill: ${props => props.theme.text};
+   }
+
+   animation: ${Bounce} 0.5s linear infinite alternate;
 
    &:hover {
       background-color: ${props => props.theme.text};
       color: ${props => props.theme.body};
       /* border: 3px solid var(--red-light); */
+
+      svg {
+         fill: ${props => props.theme.body};
+      }
    }
 `;
 

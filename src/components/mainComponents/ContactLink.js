@@ -24,7 +24,7 @@ const ContactLink = ({ click, contactModalToggler }) => {
                },
             }}
             whileHover={{ scale: 1.3 }}
-            whileTap={{ scale: 0.9 }}
+            // whileTap={{ scale: 0.9 }}
          >
             contact me
          </motion.h2>

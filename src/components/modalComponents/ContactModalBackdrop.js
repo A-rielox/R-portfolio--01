@@ -35,4 +35,6 @@ const Backdrop = styled(motion.div)`
    display: flex;
    align-items: center;
    justify-content: center;
+
+   z-index: 1000000;
 `;
