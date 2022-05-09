@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import styled, { keyframes } from 'styled-components';
 
 import { motion } from 'framer-motion';
@@ -8,6 +9,24 @@ import UpArrow from './mySkillsComponents/UpArrow';
 import items from './aboutConponents/textItems';
 
 const AboutPage = () => {
+   const ref = useRef(null);
+   const [contentWidth, setContentWidth] = useState(null);
+
+   useEffect(() => {
+      let element = ref.current;
+      setContentWidth(element.getBoundingClientRect().width);
+
+      const moveX = () => {
+         element.style.transform = `translateX(-${window.pageYOffset}px)`;
+      };
+
+      window.addEventListener('scroll', moveX);
+
+      return () => {
+         window.removeEventListener('scroll', moveX);
+      };
+   }, []);
+
    const scrollTop = () => {
       return window.scroll({
          top: 0,
@@ -18,6 +37,7 @@ const AboutPage = () => {
 
    return (
       <MainContainer
+         contentwidth={contentWidth}
          className="MAIN CONTAINER"
          initial={{ opacity: 0 }}
          animate={{ opacity: 1, transition: { duration: 1.5 } }}
@@ -25,7 +45,7 @@ const AboutPage = () => {
       >
          <LogoMainPage color="light" />
 
-         <Content className="COOOOONTENT">
+         <Content className="COOOOONTENT" ref={ref}>
             <Timeline>
                {items.map(item => {
                   const { id, title, desc } = item;
@@ -36,7 +56,7 @@ const AboutPage = () => {
 
                         <p>{desc}</p>
 
-                        <span>{id}</span>
+                        {/* <span>{id}</span> */}
                      </Item>
                   );
                })}
@@ -51,6 +71,8 @@ const AboutPage = () => {
          >
             <UpArrow width={70} height={70} />
          </Svg>
+
+         {/* el svg q no pude */}
       </MainContainer>
    );
 };
@@ -65,12 +87,27 @@ const Bounce = keyframes`
 const MainContainer = styled(motion.div)`
    min-width: 100vw;
    min-height: 100vh;
+   /* height: 300vh; */
+   height: calc(100vh + (${props => `${props.contentwidth}px`} - 100vw));
    position: relative;
 `;
 
+const Content = styled.div`
+   display: flex;
+   justify-content: flex-end;
+
+   gap: 5vw;
+
+   margin-top: 10rem; // padding top 💥
+   padding-bottom: 10rem;
+   padding-left: 5vw;
+   padding-right: 5vw;
+
+   position: fixed;
+`;
+
 const Timeline = styled.div`
-   width: 80vw;
-   max-width: 40rem;
+   display: flex;
 
    & p {
       margin-bottom: 0;
@@ -80,17 +117,20 @@ const Timeline = styled.div`
 `;
 
 const Item = styled.article`
-   border-top: 2px dashed ${props => props.theme.text};
-   margin: 0;
    padding: 4rem 2rem;
    position: relative;
 
+   height: auto;
+   width: 500px;
+   border-right: 2px dashed ${props => props.theme.text};
+
    &:nth-child(even) {
-      border-left: 2px dashed ${props => props.theme.text};
       border-top-left-radius: 2rem;
-      border-bottom-left-radius: 2rem;
-      margin-right: 2rem;
+      border-top-right-radius: 2rem;
+
       padding-right: 0;
+      border-top: 2px dashed ${props => props.theme.text};
+      margin-bottom: 2rem;
 
       span {
          left: 0;
@@ -98,11 +138,13 @@ const Item = styled.article`
    }
 
    &:nth-child(odd) {
-      border-right: 2px dashed ${props => props.theme.text};
-      border-top-right-radius: 2rem;
+      border-bottom-left-radius: 2rem;
       border-bottom-right-radius: 2rem;
-      margin-left: 2rem;
       padding-right: 0;
+      /*  */
+      border-bottom: 2px dashed ${props => props.theme.text};
+      margin-top: 2rem;
+      padding-top: 2rem;
 
       span {
          right: 0;
@@ -111,11 +153,11 @@ const Item = styled.article`
    }
 
    &:first-child {
-      border-top: 0;
-      border-top-right-radius: 0;
+      /* border-top: 0; */
+      /* border-top-right-radius: 0; */
    }
    &:last-child {
-      border-bottom-left-radius: 0;
+      /* border-bottom-left-radius: 0; */
    }
 
    span {
@@ -133,22 +175,6 @@ const Item = styled.article`
       font-weight: bold;
       font-size: calc(1em + 1vw);
    }
-`;
-
-const Content = styled.div`
-   display: flex;
-   justify-content: space-between;
-
-   gap: 5vw;
-   position: relative;
-
-   margin-top: 10rem; // padding top 💥
-   padding-left: 5vw;
-   padding-right: 5vw;
-
-   /*  */
-   /*  */
-   /*  */
 `;
 
 const Svg = styled(motion.div)`
