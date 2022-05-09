@@ -14,6 +14,7 @@ const AboutPage = () => {
    const refPlane = useRef(null);
    const [contentWidth, setContentWidth] = useState(null);
    /*  */
+   // para la cantidad de viento
    const [numbers, setNumbers] = useState(0);
 
    useEffect(() => {
@@ -80,7 +81,7 @@ const AboutPage = () => {
          <Svg ref={refPlane}>
             {[...Array(numbers)].map((x, id) => {
                return (
-                  <Wind key={id} width={25} height={25} fill="currentColor" />
+                  <Wind key={id} width={25} height={40} fill="currentColor" />
                );
             })}
 
@@ -194,7 +195,6 @@ const Svg = styled(motion.div)`
    position: fixed;
    top: 70vh;
 
-   /* left: calc(-1678px + 170px); */
    transform: translateX(-100%);
 
    cursor: pointer;
@@ -205,8 +205,6 @@ const Svg = styled(motion.div)`
    svg {
       fill: ${props => props.theme.text};
    }
-
-   /* animation: ${Bounce} 0.5s linear infinite alternate; */
 `;
 
 /* 
