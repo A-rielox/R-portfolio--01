@@ -4,20 +4,42 @@ import styled, { keyframes } from 'styled-components';
 
 import { motion } from 'framer-motion';
 import LogoMainPage from './subComponents/LogoMainPage';
-import UpArrow from './mySkillsComponents/UpArrow';
+import Plane from './aboutConponents/Plane';
+import Wind from './aboutConponents/Wind';
 
 import items from './aboutConponents/textItems';
 
 const AboutPage = () => {
    const ref = useRef(null);
+   const refPlane = useRef(null);
    const [contentWidth, setContentWidth] = useState(null);
+   /*  */
+   const [numbers, setNumbers] = useState(0);
 
    useEffect(() => {
+      let num = (window.innerWidth - 100) / 25;
+      setNumbers(parseInt(num));
+   }, []);
+   /*  */
+
+   useEffect(() => {
+      console.log(contentWidth);
       let element = ref.current;
       setContentWidth(element.getBoundingClientRect().width);
 
       const moveX = () => {
+         // para el content
          element.style.transform = `translateX(-${window.pageYOffset}px)`;
+
+         // para el avion
+         let scrollPosition = window.pageYOffset;
+         let windowSize = window.innerHeight;
+         let bodyHeight = document.body.offsetHeight;
+
+         let diff = Math.max(bodyHeight - (scrollPosition + windowSize));
+         let diffP = (diff * 100) / (bodyHeight - windowSize);
+
+         refPlane.current.style.transform = `translateX(${-diffP}%)`;
       };
 
       window.addEventListener('scroll', moveX);
@@ -26,14 +48,6 @@ const AboutPage = () => {
          window.removeEventListener('scroll', moveX);
       };
    }, []);
-
-   const scrollTop = () => {
-      return window.scroll({
-         top: 0,
-         left: 0,
-         behavior: 'smooth',
-      });
-   };
 
    return (
       <MainContainer
@@ -63,16 +77,15 @@ const AboutPage = () => {
             </Timeline>
          </Content>
 
-         <Svg
-            onClick={scrollTop}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
-            viewport={{ once: false, amount: 0.7 }}
-         >
-            <UpArrow width={70} height={70} />
-         </Svg>
+         <Svg ref={refPlane}>
+            {[...Array(numbers)].map((x, id) => {
+               return (
+                  <Wind key={id} width={25} height={25} fill="currentColor" />
+               );
+            })}
 
-         {/* el svg q no pude */}
+            <Plane width={70} height={70} />
+         </Svg>
       </MainContainer>
    );
 };
@@ -80,8 +93,8 @@ const AboutPage = () => {
 export default AboutPage;
 
 const Bounce = keyframes`
-   from {  transform:translate(-50%, -50%) rotate(-90deg)  scale(1.2);   }
-   to {  transform: translate(-50%, -50%) rotate(-90deg) scale(1);   }
+   from {  transform:translateY( 15%) scale(1.2);   }
+   to {  transform: translateY( -15%) scale(1);   }
 `;
 
 const MainContainer = styled(motion.div)`
@@ -178,18 +191,22 @@ const Item = styled.article`
 `;
 
 const Svg = styled(motion.div)`
-   position: absolute;
-   bottom: -20px;
-   left: 50%;
-   /* transform: translate(-50%, -50%) rotate(-90deg); */
+   position: fixed;
+   top: 70vh;
+
+   /* left: calc(-1678px + 170px); */
+   transform: translateX(-100%);
+
    cursor: pointer;
    z-index: 10;
+   display: flex;
+   align-items: center;
 
    svg {
       fill: ${props => props.theme.text};
    }
 
-   animation: ${Bounce} 0.5s linear infinite alternate;
+   /* animation: ${Bounce} 0.5s linear infinite alternate; */
 `;
 
 /* 
