@@ -9,7 +9,6 @@ import Plane from './aboutConponents/Plane';
 import Wind from './aboutConponents/Wind';
 
 import ContactModalParticleComponent from './modalComponents/ContactModalParticleComponent';
-// import ContactModalParticleComponent from './ContactModalParticleComponent';
 
 const AboutPage = () => {
    const ref = useRef(null);
@@ -61,13 +60,13 @@ const AboutPage = () => {
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
          >
             {/* mientras desarrollo */}
-            <ParticleWrapper
+            {/* <ParticleWrapper
                className="PARTICLE WRAPPER"
                initial={{ opacity: 0 }}
                animate={{ opacity: 1, transition: { delay: 1.5 } }}
             >
                <ContactModalParticleComponent config="about" />
-            </ParticleWrapper>
+            </ParticleWrapper> */}
 
             <LogoMainPage color="light" />
 
@@ -104,7 +103,6 @@ const MainContainer = styled(motion.div)`
    position: relative;
 
    background-color: ${props => props.theme.body};
-   /* z-index: -1; */
 `;
 
 const Content = styled.div`
