@@ -5,8 +5,9 @@ import styled from 'styled-components';
 
 //particle config
 import configLight from './contactModalConfigLight.json';
+import configStars from './contactModalConfigStars.json';
 
-const ParticleComponent = () => {
+const ParticleComponent = ({ config }) => {
    const particlesInit = async main => {
       await loadFull(main);
    };
@@ -14,13 +15,14 @@ const ParticleComponent = () => {
    const particlesLoaded = container => {
       // console.log(container);
    };
+
    return (
       <Box>
          <Particles
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
-            options={configLight}
+            options={config === 'about' ? configStars : configLight}
          />
       </Box>
    );
@@ -34,5 +36,6 @@ const Box = styled.div`
    right: 0;
    left: 0;
    bottom: 0;
-   z-index: -10;
+   /* z-index: -10; */
+   /* z-index: -10; */
 `;
