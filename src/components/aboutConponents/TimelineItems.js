@@ -2,41 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import items from './textItems';
 
-import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion'; /////
+import { motion, AnimateSharedLayout } from 'framer-motion'; /////
+
+import SingleCard from './SingleCard';
 
 const TimelineItems = () => {
    return (
-      <Timeline>
-         {items.map(item => {
-            const { id, title, position, desc } = item;
-
-            return (
-               // <Container key={id}>
-
-               <Card>
-                  <Name>{title}</Name>
-
-                  <Title>{position}</Title>
-
-                  {/* <Email>{desc}</Email> */}
-
-                  <Phone>123142</Phone>
-
-                  <CardFront />
-
-                  <CardBack />
-               </Card>
-
-               // </Container>
-            );
-         })}
-      </Timeline>
+      <AnimateSharedLayout>
+         <Timeline layout>
+            {items.map(item => {
+               return <SingleCard key={item.id} {...item} />;
+            })}
+         </Timeline>
+      </AnimateSharedLayout>
    );
 };
 
 export default TimelineItems;
 
-const Timeline = styled.div`
+const Timeline = styled(motion.div)`
    display: flex;
 
    & p {
@@ -44,83 +28,8 @@ const Timeline = styled.div`
       padding-right: 2rem;
       font-size: calc(1em + 0.5vw);
    }
-`;
-
-const Card = styled.div`
-   position: relative;
-   color: black;
-
-   width: 165px;
-   height: 280px;
-   padding: 30px;
-   border-radius: 10px;
-   background-color: red;
-`;
-
-const CardFront = styled.div`
-   position: absolute;
-   top: 0;
-   left: 0;
-   border: solid 2px yellow;
-   z-index: 10;
-
-   width: 165px;
-   height: 280px;
-   padding: 30px;
-   border-radius: 10px;
-   background-color: transparent;
-
-   transition: all 0.3s ease;
-   ${Card}:hover & {
-      top: -10px;
-      left: 10px;
-   }
-`;
-
-const CardBack = styled.div`
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: -1;
-   opacity: 0.5;
-
-   width: 165px;
-   height: 280px;
-   padding: 30px;
-   border-radius: 10px;
-   background-color: lightgreen;
-
-   transition: all 0.3s ease;
-   ${Card}:hover & {
-      top: 10px;
-      left: -10px;
-   }
-`;
-
-const Name = styled.div`
-   font-size: 28px;
-   /* margin: 15px auto 0px auto; */
-`;
-
-/* hr
-      border: 0
-      height: 1px
-      background-color: #d4d4d4 
-      animation: card-ani2 1s
-      animation-delay: 0.1s
-      animation-fill-mode: forwards */
-
-const Title = styled.div`
-   font-size: 14px;
-`;
-
-const Email = styled.div`
-   font-size: 14px;
-   /* margin: 160px auto 6px auto; */
-`;
-
-const Phone = styled.div`
-   font-size: 14px;
+   padding-right: 4rem;
+   padding-left: 4rem;
 `;
 
 /* 
