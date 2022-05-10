@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
-import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 
-const SingleCard = ({ id, title, position, desc }) => {
+const SingleCard = ({ id, title, position, desc, icon, place }) => {
    const [isHover, setIsHover] = useState(false);
 
    return (
@@ -17,27 +17,43 @@ const SingleCard = ({ id, title, position, desc }) => {
          onMouseOver={() => setIsHover(true)}
          onMouseLeave={() => setIsHover(false)}
       >
-         <Name layout>{title}</Name>
+         <Left>
+            <Name layout>{title}</Name>
 
-         <Title layout>{position}</Title>
+            <Icon layout>{icon}</Icon>
+         </Left>
 
-         <AnimatePresence>
-            {isHover && (
-               <Email
-                  layout
-                  initial={{ opacity: 0, width: 165 }}
-                  animate={{ opacity: 1, width: 265 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  exit={{ opacity: 0 }}
-               >
-                  {desc}
-               </Email>
-            )}
-         </AnimatePresence>
+         <Right>
+            <Title>{position}</Title>
 
+            <Place>{place}</Place>
+
+            <AnimatePresence>
+               {isHover && (
+                  <EmailWrapper
+                     layout
+                     initial={{ width: 165, height: 0 }}
+                     animate={{ width: 300, height: 'auto' }}
+                     transition={{ duration: 0.3 }}
+                     exit={{ width: 165, height: 0 }}
+                  >
+                     <Email
+                        layout
+                        initial={{ opacity: 0 }}
+                        animate={{
+                           opacity: 1,
+                           transition: { duration: 0.3, delay: 0.2 },
+                        }}
+                        // transition={{ duration: 0.3 }}
+                        exit={{ opacity: 0 }}
+                     >
+                        {desc}
+                     </Email>
+                  </EmailWrapper>
+               )}
+            </AnimatePresence>
+         </Right>
          <CardFront layout />
-
-         {/* <CardBack layout /> */}
       </Card>
    );
 };
@@ -48,29 +64,29 @@ const Card = styled(motion.div)`
    position: relative;
    color: black;
 
-   /* width: 165px; */
    height: min-content;
    padding: 2rem;
    border-radius: 10px;
    background-color: ${props => props.theme.text};
 
    display: flex;
-   flex-direction: column;
 
    &:not(:last-child) {
       margin-right: 1rem;
    }
+`;
 
-   /* &::after { */
-   /* content: ''; */
-   /* ... */
-   /* posion: all 0.3s ease; */
-   /* } */
-   /*  */
-   /* &:hover::after { */
-   /* ... */
-   /* right: 10px; */
-   /* } */
+const Left = styled.div`
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+`;
+const Right = styled(motion.div)`
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
 `;
 
 const CardFront = styled.div`
@@ -86,9 +102,9 @@ const CardFront = styled.div`
    border-radius: 10px;
    background-color: transparent;
 
-   transition: all 0.3s ease;
+   transition: all 0.3s linear;
    ${Card}:hover & {
-      border: solid 2px yellow;
+      border: solid 2px #cf9ce2;
       top: -10px;
       bottom: 10px;
       left: 10px;
@@ -96,54 +112,52 @@ const CardFront = styled.div`
    }
 `;
 
-const CardBack = styled.div`
-   position: absolute;
-   top: 0;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   z-index: -10;
-   /* opacity: 0.5; */
+const Name = styled(motion.div)`
+   font-size: 28px;
+   width: 165px;
+`;
+const Icon = styled.div`
+   font-size: 28px;
+   width: 165px;
+   height: 100%;
+`;
 
-   padding: 30px;
-   border-radius: 10px;
-   background-color: transparent;
+const Title = styled(motion.div)`
+   font-size: 20px;
+   width: min-content;
+   white-space: nowrap;
+   align-self: flex-start;
+   justify-self: flex-start;
 
-   transition: all 0.3s ease;
+   transition: all 0.3s linear;
    ${Card}:hover & {
-      background-color: lightgreen;
-      top: 10px;
-      bottom: -10px;
-      left: -10px;
-      right: 10px;
+      font-weight: bold;
+      align-self: center;
    }
 `;
 
-const Name = styled(motion.div)`
-   font-size: 28px;
-   /* margin: 15px auto 0px auto; */
-   width: 165px;
-`;
+const Place = styled(motion.div)`
+   font-size: 20px;
+   width: min-content;
+   margin-top: 1rem;
+   white-space: nowrap;
+   align-self: flex-start;
+   justify-self: flex-start;
 
-/* hr
-      border: 0
-      height: 1px
-      background-color: #d4d4d4 
-      animation: card-ani2 1s
-      animation-delay: 0.1s
-      animation-fill-mode: forwards */
-
-const Title = styled(motion.div)`
-   font-size: 14px;
-   width: 165px;
-   /* margin-bottom: 2rem; */
+   transition: all 0.3s linear;
+   ${Card}:hover & {
+      font-weight: bold;
+      align-self: center;
+   }
 `;
 
 const Email = styled(motion.div)`
    font-size: 14px;
-   /* margin: 160px auto 6px auto; */
+   width: 300px;
+   padding-top: 2rem;
 `;
-
-const Phone = styled(motion.div)`
-   font-size: 14px;
+const EmailWrapper = styled(motion.div)`
+   /* font-size: 14px; */
+   /* width: 165px; */
+   /* padding-top: 2rem; */
 `;
