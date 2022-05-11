@@ -111,19 +111,3 @@ const Button = styled.button`
       }
    }
 `;
-
-/* 
-button {
-   width: auto;
-   height: 3rem;
-   border: none;
-   outline: none;
-   -webkit-appearance: none;
-   border-radius: 4px;
-   font-weight: 600;
-   font-size: 1.25rem;
-   letter-spacing: 1.25px;
-   cursor: default;
-   font-family: 'Montserrat', sans-serif;
-}
-*/

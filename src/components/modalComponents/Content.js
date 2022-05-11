@@ -34,7 +34,6 @@ export default Content;
 const ContentWrapper = styled.div`
    color: ${props => props.theme.text};
    max-width: 700px;
-   min-height: 60vh;
    height: auto;
    padding: calc(2rem + 2vw);
 
@@ -72,4 +71,8 @@ const Description = styled.div`
 const Datos = styled.span`
    margin: 0 auto;
    padding-top: 2rem;
+
+   @media screen and (max-width: 700px) {
+      padding-top: 1rem;
+   }
 `;
