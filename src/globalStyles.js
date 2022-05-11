@@ -11,6 +11,10 @@ h1,h2,h3,h4,h5,h6{
    display: inline-block;
 }
 
+h2{
+   font-size: calc(1em + 0.5vw);
+}
+
 body{
    margin: 0;
    padding: 0;

@@ -11,8 +11,9 @@ const Intro = () => {
          animate={{ height: '50vh', width: '55vw' }}
          transition={{ type: 'spring', duration: 2, delay: 1 }}
       >
-         <SubBox>
+         <SubBox1>
             <Text
+               className="teeeeeeext"
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                transition={{ duration: 1, delay: 2 }}
@@ -23,12 +24,12 @@ const Intro = () => {
                </div>
 
                <div className="bottom">
-                  <h6>And I really enjoy making full-stack web aplications.</h6>
+                  <h5>And I really enjoy making full-stack web aplications.</h5>
                </div>
             </Text>
-         </SubBox>
+         </SubBox1>
 
-         <SubBox>
+         <SubBox2 className="leftBox">
             <motion.div
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
@@ -37,7 +38,7 @@ const Intro = () => {
                {/* <img className="pic" src={Me} alt="Profile Pic" /> */}
                <MainSvg width={'100%'} height={'100%'} />
             </motion.div>
-         </SubBox>
+         </SubBox2>
       </Box>
    );
 };
@@ -95,13 +96,17 @@ const Box = styled(motion.div)`
    } */
 `;
 
-const SubBox = styled.div`
+const SubBox1 = styled.div`
    width: 50%;
    position: relative;
    display: flex;
    justify-content: center;
 
-   .pic {
+   @media screen and (max-width: 700px) {
+      width: 100%;
+   }
+
+   /* .pic {
       width: 100%;
       height: auto;
 
@@ -109,8 +114,17 @@ const SubBox = styled.div`
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+   } */
+`;
 
-      /* border-radius: 50px; */
+const SubBox2 = styled.div`
+   width: 50%;
+   position: relative;
+   display: flex;
+   justify-content: center;
+
+   @media screen and (max-width: 700px) {
+      display: none;
    }
 `;
 
@@ -122,6 +136,10 @@ const Text = styled(motion.div)`
    flex-direction: column;
    justify-content: center;
    align-items: center;
+
+   @media screen and (max-width: 900px) {
+      padding: 0 0.5rem 0 2rem;
+   }
 
    .top {
       height: 50%;
@@ -144,5 +162,9 @@ const Text = styled(motion.div)`
       color: ${props => `rgba(${props.theme.bodyRgba},0.6)`};
       font-size: calc(0.5rem + 1.5vw);
       font-weight: 300;
+
+      @media screen and (max-width: 700px) {
+         font-size: calc(0.8rem + 1.5vw);
+      }
    }
 `;

@@ -58,6 +58,10 @@ const Wrapper = styled(motion.button)`
 
    svg {
       width: ${props => (props.click ? '80px' : '150px')};
+
+      @media screen and (max-width: 700px) {
+         width: ${props => (props.click ? '45px' : '100px')};
+      }
    }
 
    & > :first-child {

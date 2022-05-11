@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import { Logo as MainLogo } from '../AllSvgs';
+// RiArrowGoBackFill
 
 const pathVariants = {
    hidden: {
@@ -70,8 +71,8 @@ const Container = styled.div`
    top: 2rem;
    left: 2rem;
    z-index: 100;
-   width: 20vw;
-   /* color: rgb(120, 87, 173); */
+   /* width: 20vw; */
+   width: 150px;
 
    a {
       display: flex;
@@ -79,7 +80,8 @@ const Container = styled.div`
    }
 
    svg {
-      width: 4vw;
+      /* width: 4vw; */
+      width: calc(2em + 1vw);
       height: auto;
       fill: ${props =>
          props.color === 'light'
@@ -102,7 +104,9 @@ const Container = styled.div`
 `;
 
 const Text = styled(motion.span)`
-   font-size: 2rem;
+   /* font-size: 2rem; */
+   font-size: calc(1em + 0.5vw);
+
    color: ${props =>
       props.color === 'light'
          ? `rgba(${props.theme.textRgba},1)`

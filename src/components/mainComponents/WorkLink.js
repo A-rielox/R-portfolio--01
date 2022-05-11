@@ -46,11 +46,14 @@ const Wrapper = styled(NavLink)`
       props.click
          ? 'translate(0%, 0%) rotate(360deg)'
          : 'translate(-50%, -50%) rotate(-90deg)'};
+
+   @media screen and (max-width: 700px) {
+      transform: ${props =>
+         props.click
+            ? 'translate(-50%, -50%) rotate(-90deg)'
+            : 'translate(-50%, -50%) rotate(-90deg)'};
+   }
    text-decoration: none;
    z-index: 1;
    text-transform: capitalize;
-
-   /* @media only screen and (max-width: 50em) {
-      text-shadow: ${props => (props.click ? '0 0 4px #000' : 'none')};
-   } */
 `;
