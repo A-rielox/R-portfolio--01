@@ -10,6 +10,9 @@ import RightContent from './mySkillsComponents/RightContent';
 import TheEndSign from './mySkillsComponents/TheEndSign';
 import UpArrow from './mySkillsComponents/UpArrow';
 
+import SwiperFront from './mySkillsComponents/SwiperFront';
+import SwiperBack from './mySkillsComponents/SwiperBack';
+
 const MySkillsPage = () => {
    const { scrollYProgress } = useViewportScroll();
 
@@ -38,6 +41,10 @@ const MySkillsPage = () => {
             {medQ ? <RightContent /> : null}
          </Content>
 
+         <SwiperFront />
+
+         <SwiperBack />
+
          {medQ ? (
             <Svg
                onClick={scrollTop}
@@ -63,8 +70,8 @@ const Bounce = keyframes`
 
 const MainContainer = styled(motion.div)`
    min-width: 100vw;
-   /* min-height: 100vh; */
-   height: auto;
+   min-height: 100vh;
+   /* height: auto; */
    position: relative;
 `;
 
@@ -75,7 +82,7 @@ const Content = styled.div`
    gap: 5vw;
    position: relative;
 
-   margin-top: 10rem; // padding top 💥
+   padding-top: 10rem; // padding top 💥
    padding-left: 5vw;
    padding-right: 5vw;
 
@@ -83,7 +90,7 @@ const Content = styled.div`
       justify-content: center;
       align-items: flex-start;
 
-      margin-top: 5rem;
+      padding-top: 5rem;
    }
 `;
 
@@ -99,4 +106,13 @@ const Svg = styled(motion.div)`
    }
 
    animation: ${Bounce} 0.5s linear infinite alternate;
+`;
+
+const SwiperContent = styled.div`
+   /* position: relative; */
+   width: 100vw;
+   height: 100%;
+   background-color: red;
+   display: flex;
+   align-items: stretch;
 `;
