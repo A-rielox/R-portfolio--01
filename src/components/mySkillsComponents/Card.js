@@ -53,13 +53,15 @@ const Wrapper = styled(motion.div)`
    }
 
    position: relative;
+
+   @media screen and (max-width: 900px) {
+      height: 15rem;
+   }
 `;
 
 const Icon = styled.img`
    width: 50%;
    height: auto;
-   /* display: block; */
-   /* object-fit: cover; */
 
    padding: 2rem;
 
@@ -67,6 +69,10 @@ const Icon = styled.img`
    top: 40%;
    left: 50%;
    transform: translate(-50%, -50%);
+
+   @media screen and (max-width: 1100px) {
+      width: 90%;
+   }
 `;
 
 const Title = styled.h3`

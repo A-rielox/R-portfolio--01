@@ -13,6 +13,8 @@ import UpArrow from './mySkillsComponents/UpArrow';
 const MySkillsPage = () => {
    const { scrollYProgress } = useViewportScroll();
 
+   const medQ = window.matchMedia('(min-width: 700px)').matches;
+
    const scrollTop = () => {
       return window.scroll({
          top: 0,
@@ -33,19 +35,21 @@ const MySkillsPage = () => {
          <Content className="COOOOONTENT">
             <LeftContent />
 
-            <RightContent />
+            {medQ ? <RightContent /> : null}
          </Content>
 
-         <Svg
-            onClick={scrollTop}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
-            viewport={{ once: false, amount: 0.7 }}
-         >
-            <UpArrow width={70} height={70} />
-         </Svg>
+         {medQ ? (
+            <Svg
+               onClick={scrollTop}
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
+               viewport={{ once: false, amount: 0.7 }}
+            >
+               <UpArrow width={70} height={70} />
+            </Svg>
+         ) : null}
 
-         <TheEndSign scrollprogress={scrollYProgress} />
+         {medQ ? <TheEndSign scrollprogress={scrollYProgress} /> : null}
       </MainContainer>
    );
 };
@@ -59,7 +63,8 @@ const Bounce = keyframes`
 
 const MainContainer = styled(motion.div)`
    min-width: 100vw;
-   min-height: 100vh;
+   /* min-height: 100vh; */
+   height: auto;
    position: relative;
 `;
 
@@ -73,13 +78,19 @@ const Content = styled.div`
    margin-top: 10rem; // padding top 💥
    padding-left: 5vw;
    padding-right: 5vw;
+
+   @media screen and (max-width: 700px) {
+      justify-content: center;
+      align-items: flex-start;
+
+      margin-top: 5rem;
+   }
 `;
 
 const Svg = styled(motion.div)`
    position: absolute;
    bottom: -20px;
    left: 50%;
-   /* transform: translate(-50%, -50%) rotate(-90deg); */
    cursor: pointer;
    z-index: 10;
 

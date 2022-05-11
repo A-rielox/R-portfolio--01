@@ -56,6 +56,13 @@ const LeftWrapper = styled.div`
    width: 70vw;
    position: relative;
    z-index: 10;
+
+   @media screen and (max-width: 700px) {
+      width: 90vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
 `;
 
 const Content = styled.div`
@@ -69,19 +76,24 @@ const Content = styled.div`
       color: ${props => props.theme.body};
       background-color: ${props => props.theme.text};
    }
-   /*  */
-   /*  */
-   /*  */
+
    position: fixed;
    width: 65vw;
-   min-height: 60vh;
+   /* min-height: 60vh; */
    padding: calc(1rem + 2vw);
 
    font-family: 'Ubuntu Mono', monospace;
    display: flex;
    flex-direction: column;
-   /* justify-content: space-between; */
    cursor: pointer;
+
+   @media screen and (max-width: 900px) {
+      height: auto;
+   }
+   @media screen and (max-width: 700px) {
+      position: relative;
+      width: 100vw;
+   }
 `;
 
 const Title = styled.h2`
