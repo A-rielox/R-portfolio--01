@@ -33,7 +33,6 @@ const ContactModal = ({ isContactModal, contactModalToggler }) => {
       <Backdrop onClick={contactModalToggler}>
          <Content
             onClick={e => e.stopPropagation()}
-            // className="modal orange-gradient"
             className="MODAL"
             variants={dropIn}
             initial="hidden"

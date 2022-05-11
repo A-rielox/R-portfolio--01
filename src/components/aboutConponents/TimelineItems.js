@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import items from './textItems';
 
-import { motion, AnimateSharedLayout } from 'framer-motion'; /////
+import { motion, AnimateSharedLayout } from 'framer-motion';
 
 import SingleCard from './SingleCard';
 
@@ -28,8 +28,8 @@ const Timeline = styled(motion.div)`
       padding-right: 2rem;
       font-size: calc(1em + 0.5vw);
    }
-   padding-right: 4rem;
-   padding-left: 4rem;
+   padding-right: 7rem;
+   padding-left: 7rem;
 `;
 
 /* 

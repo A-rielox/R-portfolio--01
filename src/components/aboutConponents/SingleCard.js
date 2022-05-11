@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import styled from 'styled-components';
 
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const SingleCard = ({ id, title, position, desc, icon, place }) => {
    const [isHover, setIsHover] = useState(false);
@@ -44,7 +44,6 @@ const SingleCard = ({ id, title, position, desc, icon, place }) => {
                            opacity: 1,
                            transition: { duration: 0.3, delay: 0.2 },
                         }}
-                        // transition={{ duration: 0.3 }}
                         exit={{ opacity: 0 }}
                      >
                         {desc}
@@ -65,14 +64,16 @@ const Card = styled(motion.div)`
    color: black;
 
    height: min-content;
-   padding: 2rem;
+   /* padding: 4rem; */
+   padding: calc(2rem + 2vw);
    border-radius: 10px;
    background-color: ${props => props.theme.text};
 
    display: flex;
+   font-family: 'Ubuntu Mono', monospace;
 
    &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 1.5rem;
    }
 `;
 
@@ -113,7 +114,8 @@ const CardFront = styled.div`
 `;
 
 const Name = styled(motion.div)`
-   font-size: 28px;
+   /* font-size: 28px; */
+   font-size: calc(1em + 0.7vw);
    width: 165px;
 `;
 const Icon = styled.div`
@@ -123,7 +125,8 @@ const Icon = styled.div`
 `;
 
 const Title = styled(motion.div)`
-   font-size: 20px;
+   /* font-size: 20px; */
+   font-size: calc(1em + 0.5vw);
    width: min-content;
    white-space: nowrap;
    align-self: flex-start;
@@ -137,7 +140,8 @@ const Title = styled(motion.div)`
 `;
 
 const Place = styled(motion.div)`
-   font-size: 20px;
+   /* font-size: 20px; */
+   font-size: calc(1em + 0.5vw);
    width: min-content;
    margin-top: 1rem;
    white-space: nowrap;
@@ -151,13 +155,11 @@ const Place = styled(motion.div)`
    }
 `;
 
+const EmailWrapper = styled(motion.div)``;
+
 const Email = styled(motion.div)`
-   font-size: 14px;
+   /* font-size: 14px; */
+   font-size: calc(0.8em + 0.4vw);
    width: 300px;
    padding-top: 2rem;
-`;
-const EmailWrapper = styled(motion.div)`
-   /* font-size: 14px; */
-   /* width: 165px; */
-   /* padding-top: 2rem; */
 `;

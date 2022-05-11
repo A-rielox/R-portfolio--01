@@ -59,13 +59,13 @@ const AboutPage = () => {
             animate={{ opacity: 1, transition: { duration: 1.5 } }}
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
          >
-            <ParticleWrapper
+            {/* <ParticleWrapper
                className="PARTICLE WRAPPER"
                initial={{ opacity: 0 }}
                animate={{ opacity: 1, transition: { delay: 1.5 } }}
             >
                <ContactModalParticleComponent config="about" />
-            </ParticleWrapper>
+            </ParticleWrapper> */}
 
             <LogoMainPage color="light" />
 
