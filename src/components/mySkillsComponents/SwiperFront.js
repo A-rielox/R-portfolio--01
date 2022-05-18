@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,15 +7,13 @@ import 'swiper/css';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 
-// import './styles.css';
-
 import { EffectCube, Autoplay } from 'swiper';
 
 import { frontIconList } from './iconList';
 
 export default function App() {
    return (
-      <Wrapper>
+      <Wrapper className="SwiperFront">
          <Swiper
             effect={'cube'}
             grabCursor={true}
@@ -33,7 +31,6 @@ export default function App() {
             className="mySwiper"
          >
             {frontIconList.map(item => {
-               console.log(item);
                const { icon, name, id } = item;
 
                return (

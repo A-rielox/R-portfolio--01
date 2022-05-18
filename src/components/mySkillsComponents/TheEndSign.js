@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const TheEndSign = ({ scrollprogress }) => {
    return (
-      <Wrapper>
+      <Wrapper className="TheEndSign">
          <svg x="0px" y="0px" viewBox="0 0 2000 1500">
             <g>
                <motion.path

@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 const SingleCard = ({ id, title, position, desc, icon, place }) => {
    const [isHover, setIsHover] = useState(false);
 
+   const medQ = window.matchMedia('(min-width: 700px)').matches;
+
    return (
       <Card
          className="caaaaaaaaard"
@@ -28,29 +30,33 @@ const SingleCard = ({ id, title, position, desc, icon, place }) => {
 
             <Place>{place}</Place>
 
-            <AnimatePresence>
-               {isHover && (
-                  <EmailWrapper
-                     layout
-                     initial={{ width: 165, height: 0 }}
-                     animate={{ width: 300, height: 'auto' }}
-                     transition={{ duration: 0.3 }}
-                     exit={{ width: 165, height: 0 }}
-                  >
-                     <Email
+            {medQ ? (
+               <AnimatePresence>
+                  {isHover && (
+                     <EmailWrapper
                         layout
-                        initial={{ opacity: 0 }}
-                        animate={{
-                           opacity: 1,
-                           transition: { duration: 0.3, delay: 0.2 },
-                        }}
-                        exit={{ opacity: 0 }}
+                        initial={{ width: 165, height: 0 }}
+                        animate={{ width: 300, height: 'auto' }}
+                        transition={{ duration: 0.3 }}
+                        exit={{ width: 165, height: 0 }}
                      >
-                        {desc}
-                     </Email>
-                  </EmailWrapper>
-               )}
-            </AnimatePresence>
+                        <Email
+                           layout
+                           initial={{ opacity: 0 }}
+                           animate={{
+                              opacity: 1,
+                              transition: { duration: 0.3, delay: 0.2 },
+                           }}
+                           exit={{ opacity: 0 }}
+                        >
+                           {desc}
+                        </Email>
+                     </EmailWrapper>
+                  )}
+               </AnimatePresence>
+            ) : (
+               <Email>{desc}</Email>
+            )}
          </Right>
          <CardFront layout />
       </Card>
@@ -75,6 +81,20 @@ const Card = styled(motion.div)`
    &:not(:last-child) {
       margin-right: 1.5rem;
    }
+
+   @media screen and (max-width: 700px) {
+      flex-direction: column;
+
+      margin: 1rem 0.5rem 1rem 0.5rem;
+
+      &:not(:last-child) {
+         margin-right: 0;
+      }
+   }
+
+   @media screen and (max-width: 400px) {
+      padding: 2rem 1rem 2rem 1rem;
+   }
 `;
 
 const Left = styled.div`
@@ -82,12 +102,20 @@ const Left = styled.div`
    flex-direction: column;
    justify-content: flex-start;
    align-items: flex-start;
+
+   @media screen and (max-width: 700px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+   }
 `;
 const Right = styled(motion.div)`
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
    align-items: flex-start;
+   color: ${props => props.theme.body};
 `;
 
 const CardFront = styled.div`
@@ -111,17 +139,38 @@ const CardFront = styled.div`
       left: 10px;
       right: -10px;
    }
+
+   @media screen and (max-width: 700px) {
+      border: solid 2px #cf9ce2;
+      top: -10px;
+      bottom: 10px;
+      left: 10px;
+      right: -10px;
+   }
 `;
 
 const Name = styled(motion.div)`
    /* font-size: 28px; */
    font-size: calc(1em + 0.7vw);
    width: 165px;
+   color: ${props => props.theme.body};
+
+   @media screen and (max-width: 700px) {
+      width: min-content;
+      white-space: nowrap;
+      font-size: 1.7rem;
+   }
 `;
 const Icon = styled.div`
    font-size: 28px;
    width: 165px;
    height: 100%;
+   color: ${props => props.theme.body};
+
+   @media screen and (max-width: 700px) {
+      width: min-content;
+      font-size: 2.7rem;
+   }
 `;
 
 const Title = styled(motion.div)`
@@ -134,6 +183,11 @@ const Title = styled(motion.div)`
 
    transition: all 0.3s linear;
    ${Card}:hover & {
+      font-weight: bold;
+      align-self: center;
+   }
+
+   @media screen and (max-width: 700px) {
       font-weight: bold;
       align-self: center;
    }
@@ -153,6 +207,11 @@ const Place = styled(motion.div)`
       font-weight: bold;
       align-self: center;
    }
+
+   @media screen and (max-width: 700px) {
+      font-weight: bold;
+      align-self: center;
+   }
 `;
 
 const EmailWrapper = styled(motion.div)``;
@@ -162,4 +221,8 @@ const Email = styled(motion.div)`
    font-size: calc(0.8em + 0.4vw);
    width: 300px;
    padding-top: 2rem;
+
+   @media screen and (max-width: 400px) {
+      text-align: center;
+   }
 `;

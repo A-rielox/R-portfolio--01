@@ -23,6 +23,10 @@ export default TimelineItems;
 const Timeline = styled(motion.div)`
    display: flex;
 
+   @media screen and (max-width: 700px) {
+      flex-direction: column;
+   }
+
    & p {
       margin-bottom: 0;
       padding-right: 2rem;
@@ -30,6 +34,11 @@ const Timeline = styled(motion.div)`
    }
    padding-right: 7rem;
    padding-left: 7rem;
+
+   @media screen and (max-width: 700px) {
+      padding-right: 0;
+      padding-left: 0;
+   }
 `;
 
 /* 

@@ -18,6 +18,8 @@ const AboutPage = () => {
    // para la cantidad de viento
    const [numbers, setNumbers] = useState(0);
 
+   const medQ = window.matchMedia('(min-width: 700px)').matches;
+
    useEffect(() => {
       let num = (window.innerWidth - 100) / 25;
       setNumbers(parseInt(num));
@@ -43,11 +45,14 @@ const AboutPage = () => {
          refPlane.current.style.transform = `translateX(${-diffP}%)`;
       };
 
-      window.addEventListener('scroll', moveX);
+      if (medQ) {
+         window.addEventListener('scroll', moveX);
 
-      return () => {
-         window.removeEventListener('scroll', moveX);
-      };
+         return () => {
+            window.removeEventListener('scroll', moveX);
+         };
+      }
+      // eslint-disable-next-line
    }, []);
 
    return (
@@ -59,13 +64,13 @@ const AboutPage = () => {
             animate={{ opacity: 1, transition: { duration: 1.5 } }}
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
          >
-            {/* <ParticleWrapper
+            <ParticleWrapper
                className="PARTICLE WRAPPER"
                initial={{ opacity: 0 }}
                animate={{ opacity: 1, transition: { delay: 1.5 } }}
             >
                <ContactModalParticleComponent config="about" />
-            </ParticleWrapper> */}
+            </ParticleWrapper>
 
             <LogoMainPage color="light" />
 
@@ -73,20 +78,22 @@ const AboutPage = () => {
                <TimelineItems />
             </Content>
 
-            <Svg ref={refPlane}>
-               {[...Array(numbers)].map((x, id) => {
-                  return (
-                     <Wind
-                        key={id}
-                        width={25}
-                        height={40}
-                        // fill="currentColor"
-                     />
-                  );
-               })}
+            {medQ ? (
+               <Svg ref={refPlane}>
+                  {[...Array(numbers)].map((x, id) => {
+                     return (
+                        <Wind
+                           key={id}
+                           width={25}
+                           height={40}
+                           // fill="currentColor"
+                        />
+                     );
+                  })}
 
-               <Plane width={70} height={70} />
-            </Svg>
+                  <Plane width={70} height={70} />
+               </Svg>
+            ) : null}
          </MainContainer>
       </ThemeProvider>
    );
@@ -102,11 +109,15 @@ const MainContainer = styled(motion.div)`
    position: relative;
 
    background-color: ${props => props.theme.body};
+
+   @media screen and (max-width: 700px) {
+      height: 100%;
+   }
 `;
 
 const Content = styled.div`
    display: flex;
-   justify-content: flex-end;
+   justify-content: center;
 
    gap: 5vw;
 
@@ -117,6 +128,15 @@ const Content = styled.div`
 
    position: fixed;
    color: ${props => props.theme.text};
+
+   @media screen and (max-width: 700px) {
+      justify-content: center;
+
+      position: relative;
+      /* background-color: red; */
+      margin-top: 0;
+      padding-top: 10rem;
+   }
 `;
 
 const ParticleWrapper = styled(motion.div)``;
