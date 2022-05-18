@@ -32,14 +32,18 @@ const AboutPage = () => {
    const medQ = window.matchMedia('(min-width: 700px)').matches;
 
    useEffect(() => {
+      // cantidad de viento
       let num = (window.innerWidth - 100) / 25;
       setNumbers(parseInt(num));
-   }, [resize]);
 
-   // para desplazamiento del avion y contenido
-   useEffect(() => {
+      // element es el timeline y agarro su ancho
       let element = ref.current;
       setContentWidth(element.getBoundingClientRect().width);
+
+      // reseteo el desplazamiento cuando se van a mobil
+      if (!medQ) {
+         element.style.transform = `translateX(0px)`;
+      }
 
       const moveX = () => {
          // para mover el content
@@ -63,6 +67,7 @@ const AboutPage = () => {
             window.removeEventListener('scroll', moveX);
          };
       }
+
       // eslint-disable-next-line
    }, [resize]);
 
