@@ -2,7 +2,7 @@ import React from 'react';
 
 const UpArrow = props => {
    return (
-      <svg className="xxxxxxx" viewBox="0 0 414.287 414.287" {...props}>
+      <svg viewBox="0 0 414.287 414.287" {...props}>
          <path
             style={{
                fill: props.fill,

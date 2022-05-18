@@ -44,16 +44,15 @@ const MySkillsPage = () => {
          <SwiperFront />
          <SwiperBack />
 
-         {medQ ? (
-            <Svg
-               onClick={scrollTop}
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
-               viewport={{ once: false, amount: 0.7 }}
-            >
-               <UpArrow width={70} height={70} />
-            </Svg>
-         ) : null}
+         <Svg
+            className="UpArrow"
+            onClick={scrollTop}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
+            viewport={{ once: false, amount: 0.7 }}
+         >
+            <UpArrow width={70} height={70} />
+         </Svg>
 
          <TheEndSign scrollprogress={scrollYProgress} />
       </MainContainer>
@@ -73,6 +72,18 @@ const MainContainer = styled(motion.div)`
    /* height: auto; */
    position: relative;
 
+   .SwiperBack {
+      display: none;
+   }
+
+   .SwiperFront {
+      display: none;
+   }
+
+   .UpArrow {
+      display: inline-block;
+   }
+
    @media screen and (max-width: 700px) {
       .right-WRAPPER {
          display: none;
@@ -86,6 +97,10 @@ const MainContainer = styled(motion.div)`
          display: inline-block;
       }
       .TheEndSign {
+         display: none;
+      }
+
+      .UpArrow {
          display: none;
       }
    }

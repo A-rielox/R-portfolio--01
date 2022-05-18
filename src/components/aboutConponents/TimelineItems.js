@@ -2,19 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import items from './textItems';
 
-import { motion, AnimateSharedLayout } from 'framer-motion';
+import { motion /* , AnimateSharedLayout */ } from 'framer-motion';
 
 import SingleCard from './SingleCard';
 
 const TimelineItems = () => {
    return (
-      <AnimateSharedLayout>
-         <Timeline layout>
-            {items.map(item => {
-               return <SingleCard key={item.id} {...item} />;
-            })}
-         </Timeline>
-      </AnimateSharedLayout>
+      // <AnimateSharedLayout>
+      <Timeline layout>
+         {items.map(item => {
+            return <SingleCard key={item.id} {...item} />;
+         })}
+      </Timeline>
+      // </AnimateSharedLayout>
    );
 };
 
