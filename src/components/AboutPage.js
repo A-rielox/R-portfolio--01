@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 
 import { DarkTheme } from './Themes';
@@ -7,6 +7,7 @@ import TimelineItems from './aboutConponents/TimelineItems';
 import LogoMainPage from './subComponents/LogoMainPage';
 import Plane from './aboutConponents/Plane';
 import Wind from './aboutConponents/Wind';
+import UpArrow from './mySkillsComponents/UpArrow';
 
 import ContactModalParticleComponent from './modalComponents/ContactModalParticleComponent';
 
@@ -71,6 +72,14 @@ const AboutPage = () => {
       // eslint-disable-next-line
    }, [resize]);
 
+   const scrollTop = () => {
+      return window.scroll({
+         top: 0,
+         left: 0,
+         behavior: 'smooth',
+      });
+   };
+
    return (
       <ThemeProvider theme={DarkTheme}>
          <MainContainer
@@ -110,12 +119,27 @@ const AboutPage = () => {
                   <Plane width={70} height={70} />
                </Svg>
             ) : null}
+
+            <SvgBackTop
+               className="UpArrow"
+               onClick={scrollTop}
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1, transition: { duration: 1.5 } }}
+               viewport={{ once: false, amount: 0.7 }}
+            >
+               <UpArrow width={50} height={50} />
+            </SvgBackTop>
          </MainContainer>
       </ThemeProvider>
    );
 };
 
 export default AboutPage;
+
+const Bounce = keyframes`
+   from {  transform:translate(-50%, -50%) rotate(-90deg)  scale(1.2);   }
+   to {  transform: translate(-50%, -50%) rotate(-90deg) scale(1);   }
+`;
 
 const MainContainer = styled(motion.div)`
    min-width: 100vw;
@@ -174,6 +198,24 @@ const Svg = styled(motion.div)`
       path {
          stroke: ${props => props.theme.text};
       }
+   }
+`;
+
+const SvgBackTop = styled(motion.div)`
+   position: absolute;
+   bottom: -20px;
+   left: 50%;
+   cursor: pointer;
+   z-index: 10;
+
+   svg {
+      fill: ${props => props.theme.text};
+   }
+
+   animation: ${Bounce} 0.5s linear infinite alternate;
+
+   @media screen and (min-width: 700px) {
+      display: none;
    }
 `;
 

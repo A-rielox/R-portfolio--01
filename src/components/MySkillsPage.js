@@ -121,7 +121,7 @@ const Content = styled.div`
       justify-content: center;
       align-items: flex-start;
 
-      padding-top: 5rem;
+      padding-top: 7rem;
    }
 `;
 

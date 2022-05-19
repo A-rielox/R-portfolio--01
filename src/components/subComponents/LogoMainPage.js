@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import { Logo as MainLogo } from '../AllSvgs';
-// RiArrowGoBackFill
+import { TiArrowBackOutline } from 'react-icons/ti';
 
 const pathVariants = {
    hidden: {
@@ -41,8 +41,12 @@ const textVariants = {
 };
 
 const LogoMainPage = ({ color }) => {
+   const location = useLocation();
+
+   let atHome = location.pathname === '/';
+
    return (
-      <Container color={color}>
+      <Container color={color} atHome={atHome}>
          <Link to="/">
             <MainLogo
                /* width, height y fill en styled.div */
@@ -51,14 +55,21 @@ const LogoMainPage = ({ color }) => {
                animate={'visible'}
             />
 
-            <Text
-               color={color}
-               variants={textVariants}
-               initial="hidden"
-               animate="visible"
-            >
-               -rielox
-            </Text>
+            {atHome ? (
+               <Text
+                  color={color}
+                  variants={textVariants}
+                  initial="hidden"
+                  animate="visible"
+               >
+                  -rielox
+               </Text>
+            ) : (
+               <TextNoHome color={color}>
+                  <TiArrowBackOutline />
+                  Home
+               </TextNoHome>
+            )}
          </Link>
       </Container>
    );
@@ -75,7 +86,8 @@ const Container = styled.div`
    width: 150px;
 
    a {
-      display: flex;
+      /* display: flex; */
+      display: ${props => (props.atHome === true ? 'flex' : null)};
       align-items: center;
    }
 
@@ -111,5 +123,20 @@ const Text = styled(motion.span)`
       props.color === 'light'
          ? `rgba(${props.theme.textRgba},1)`
          : `rgba(${props.theme.bodyRgba},0.8)`};
-   /* color: ${props => props.theme.text}; */
+`;
+
+const TextNoHome = styled.div`
+   display: flex;
+   align-items: center;
+   font-size: calc(0.7em + 0.1vw);
+   margin-left: -0.5rem;
+
+   color: ${props =>
+      props.color === 'light'
+         ? `rgba(${props.theme.textRgba},.5)`
+         : `rgba(${props.theme.bodyRgba},0.8)`};
+
+   svg {
+      font-size: calc(0.4em + 0.1vw);
+   }
 `;
