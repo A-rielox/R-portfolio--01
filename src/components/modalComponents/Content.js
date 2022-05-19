@@ -6,20 +6,18 @@ const Content = () => {
       <ContentWrapper className="CONTENT WRAPPER">
          <Title>Ariel Godoy</Title>
 
-         <Description>
-            Me puedes contactar en cualquier momento a través de:
-         </Description>
+         <Description>You can contact me at any time through:</Description>
 
          <Datos>
             <Description>
-               el correo
+               the mail:
                <p>
                   <strong>arielox.ag@gmail.com</strong>
                </p>
             </Description>
 
             <Description>
-               o al teléfono/WhatsApp
+               or through the phone/WhatsApp:
                <p>
                   <strong>+56 9 xxxxxxxxx</strong>
                </p>

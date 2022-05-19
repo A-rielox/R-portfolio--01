@@ -12,37 +12,33 @@ const SingleCard = ({ id, title, position, desc, icon, place }) => {
    return (
       <Card
          className="caaaaaaaaard"
-         layout
-         transition={{
-            duration: 0.5,
-         }}
          onMouseOver={() => setIsHover(true)}
          onMouseLeave={() => setIsHover(false)}
       >
-         <Left>
-            <Name layout>{title}</Name>
+         <OnView>
+            <Left>
+               <Years>{title}</Years>
 
-            <Icon layout>{icon}</Icon>
-         </Left>
+               <Place>{place}</Place>
+            </Left>
 
-         <Right>
             <Title>{position}</Title>
 
-            <Place>{place}</Place>
+            <Icon>{icon}</Icon>
+         </OnView>
 
+         <Down>
             {/* ANIMADO */}
             <AnimatePresence>
                {isHover && (
                   <EmailWrapper
-                     layout
-                     initial={{ width: 165, height: 0 }}
-                     animate={{ width: 300, height: 'auto' }}
+                     initial={{ height: 0 }}
+                     animate={{ height: 'min-content' }}
                      transition={{ duration: 0.3 }}
-                     exit={{ width: 165, height: 0 }}
+                     exit={{ height: 0 }}
                   >
                      <Email
                         className="Email-animado"
-                        layout
                         initial={{ opacity: 0 }}
                         animate={{
                            opacity: 1,
@@ -58,8 +54,8 @@ const SingleCard = ({ id, title, position, desc, icon, place }) => {
 
             {/* NO ANIMADO */}
             <Email className="Email">{desc}</Email>
-         </Right>
-         <CardFront layout />
+         </Down>
+         <CardFront />
       </Card>
    );
 };
@@ -77,6 +73,7 @@ const Card = styled(motion.div)`
    background-color: ${props => props.theme.text};
 
    display: flex;
+   flex-direction: column;
    font-family: 'Ubuntu Mono', monospace;
 
    &:not(:last-child) {
@@ -93,7 +90,7 @@ const Card = styled(motion.div)`
    @media screen and (max-width: 700px) {
       flex-direction: column;
 
-      margin: 1rem 0.5rem 1rem 0.5rem;
+      margin: 1rem 0.5rem 1rem 0rem;
 
       &:not(:last-child) {
          margin-right: 0;
@@ -112,26 +109,32 @@ const Card = styled(motion.div)`
    }
 `;
 
-const Left = styled.div`
+const OnView = styled.div`
    display: flex;
    flex-direction: column;
-   justify-content: flex-start;
-   align-items: flex-start;
+   position: relative;
 
    @media screen and (max-width: 700px) {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
+      /* width: 90%; */
    }
 `;
-const Right = styled(motion.div)`
+
+const Left = styled.div`
    display: flex;
-   flex-direction: column;
+   /* flex-direction: column; */
    justify-content: flex-start;
    align-items: flex-start;
-   color: ${props => props.theme.body};
+   margin-right: 1rem;
+
+   @media screen and (max-width: 700px) {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      margin-right: 0;
+   }
 `;
+
+const Down = styled.div``;
 
 const CardFront = styled.div`
    position: absolute;
@@ -164,67 +167,69 @@ const CardFront = styled.div`
    }
 `;
 
-const Name = styled(motion.div)`
+const Years = styled(motion.div)`
    /* font-size: 28px; */
-   font-size: calc(1em + 0.7vw);
+   font-size: calc(0.7em + 0.7vw);
    width: 165px;
    color: ${props => props.theme.body};
+
+   ${Card}:hover & {
+      font-weight: bold;
+   }
 
    @media screen and (max-width: 700px) {
       width: min-content;
       white-space: nowrap;
-      font-size: 1.7rem;
+      font-size: calc(1em + 0.5vw);
+   }
+`;
+const Place = styled(motion.div)`
+   /* font-size: 20px; */
+   font-size: calc(0.7em + 0.5vw);
+   width: min-content;
+   white-space: nowrap;
+
+   transition: all 0.3s linear;
+   ${Card}:hover & {
+      font-weight: bold;
+   }
+
+   @media screen and (max-width: 700px) {
+      font-size: calc(1em + 0.5vw);
    }
 `;
 const Icon = styled.div`
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   transform: translate(-50%, 120%);
    font-size: 28px;
-   width: 165px;
-   height: 100%;
    color: ${props => props.theme.body};
 
    @media screen and (max-width: 700px) {
       width: min-content;
-      font-size: 2.7rem;
+      font-size: 2rem;
+      transform: translate(-50%, 100%);
+      /* display: none; */
    }
 `;
 
 const Title = styled(motion.div)`
    /* font-size: 20px; */
-   font-size: calc(1em + 0.5vw);
-   width: min-content;
-   white-space: nowrap;
-   align-self: flex-start;
-   justify-self: flex-start;
-
-   transition: all 0.3s linear;
-   ${Card}:hover & {
-      font-weight: bold;
-      align-self: center;
-   }
-
-   @media screen and (max-width: 700px) {
-      font-weight: bold;
-      align-self: center;
-   }
-`;
-
-const Place = styled(motion.div)`
-   /* font-size: 20px; */
-   font-size: calc(1em + 0.5vw);
-   width: min-content;
+   font-size: calc(0.7em + 0.5vw);
+   width: 100%;
+   height: 3rem;
    margin-top: 1rem;
-   white-space: nowrap;
-   align-self: flex-start;
-   justify-self: flex-start;
 
    transition: all 0.3s linear;
    ${Card}:hover & {
       font-weight: bold;
-      align-self: center;
+      /* align-self: center; */
    }
 
    @media screen and (max-width: 700px) {
       font-weight: bold;
+      font-size: calc(1em + 0.5vw);
       align-self: center;
    }
 `;
@@ -234,8 +239,7 @@ const EmailWrapper = styled(motion.div)``;
 const Email = styled(motion.div)`
    /* font-size: 14px; */
    font-size: calc(0.8em + 0.4vw);
-   width: 300px;
-   padding-top: 2rem;
+   padding-top: 4rem;
 
    @media screen and (max-width: 400px) {
       text-align: center;

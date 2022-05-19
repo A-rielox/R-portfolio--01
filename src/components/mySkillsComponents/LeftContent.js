@@ -8,40 +8,37 @@ const LeftContent = () => {
             <Title>Full Stack Developer</Title>
 
             <Description>
-               Me gusta desarrollar aplicaciones "FullStack", en los distintos
-               sabores de Javascript, ocupo normalmente en:
+               I like to develop "FullStack" web applications, in the different
+               flavors of Javascript, I usually deal with:
             </Description>
 
             <Description>
                <strong>Frontend</strong>
                <p>
-                  Html, Css, Js y React, dando los estilos con
+                  Html, Css, Js and React, giving the styles with
                   Styled-conponents.
                </p>
             </Description>
             <Description>
                <p>
-                  Me gusta utilizar el Framework MUI (V5) y las animaciones
-                  hacerlas tanto con los Keyframes de styled-components o Motion
-                  ( de Framer )
+                  I like to use the MUI Framework (V5) and make the animations
+                  both with the Keyframes of styled-components or Motion ( by
+                  Framer )
                </p>
             </Description>
 
             <Description>
                <strong>Backend</strong>
-               <p>
-                  Trabajo con Node y Express, ocupando mongoDB como base de
-                  datos
-               </p>
+               <p>I work with Node and Express, using mongoDB as database</p>
             </Description>
 
             <Divider />
 
             <Description>
-               <strong>También ocupo frecuentemente</strong>
+               <strong>I also frequently use</strong>
                <p>
-                  Axios, Sass, Redux, Auth0, Jwt, Postman, Github, npm y desde
-                  hace un par de años Linux
+                  Axios, Sass, Redux, Auth0, Jwt, Postman, Github, npm and for a
+                  couple of years Linux.
                </p>
             </Description>
          </Content>

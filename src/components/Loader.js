@@ -72,7 +72,7 @@ const Loader = () => {
             duration: 2,
          }}
       >
-         <Top>
+         <Top className="TOP">
             <MainLogo
                /* width, height y fill en styled.div */
                variants={pathVariants}
@@ -153,12 +153,14 @@ const Top = styled.div`
    display: flex;
    align-items: center;
    justify-content: center;
-   margin-left: 4rem;
+   /* margin-left: 4rem; */
+   margin-left: 5vw;
 `;
 
 const Text = styled(motion.span)`
    color: ${props => props.theme.body};
-   font-size: 5rem;
+   /* font-size: 5rem; */
+   font-size: calc(3em + 1vw);
 `;
 
 const Bottom = styled(motion.div)`
@@ -169,5 +171,6 @@ const Bottom = styled(motion.div)`
 
 const Letter = styled(motion.span)`
    font-family: 'Kaushan Script';
-   font-size: 5rem;
+   /* font-size: 5rem; */
+   font-size: calc(3em + 3vw);
 `;

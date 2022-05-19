@@ -20,7 +20,7 @@ const Intro = () => {
             >
                <div className="top">
                   <h1>Hi,</h1>
-                  <h3>I'm A-rielox.</h3>
+                  <h3>I'm Ariel Godoy.</h3>
                </div>
 
                <div className="bottom">
